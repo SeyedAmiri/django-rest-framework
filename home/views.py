@@ -1,7 +1,12 @@
-from django.shortcuts import render
-from django.views import View
+from rest_framework.decorators import APIView
+from rest_framework.response import Response
+# from rest_framework.decorators import api_view
 
 
-class Home(View):
+# @api_view(['GET', 'POST', 'PUT'])
+# def home(request):
+# 	return Response({'name': 'seyed'})
+
+class Home(APIView):
 	def get(self, request):
-		return render(request, 'home/home.html')
+		return Response({'name': 'seyed'})
