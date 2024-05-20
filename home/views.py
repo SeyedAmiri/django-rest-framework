@@ -9,4 +9,9 @@ from rest_framework.response import Response
 
 class Home(APIView):
 	def get(self, request):
-		return Response({'name': 'seyed'})
+		name = request.query_params['name']
+		return Response({'name': name})
+
+	def post(self, request):
+		data = request.data
+		return Response(data)
