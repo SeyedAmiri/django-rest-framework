@@ -12,7 +12,6 @@ class UserRegister(APIView):
                 username=ser_data.validated_data['username'],
                 email=ser_data.validated_data['email'],
                 password=ser_data.validated_data['password'],
-                password2=ser_data.validated_data['password2'],
             )
             return Response(ser_data.data)
         return Response(ser_data.errors)
