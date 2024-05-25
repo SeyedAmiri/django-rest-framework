@@ -2,15 +2,18 @@ from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from .models import Person
 from .serializers import PersonSerializer
-# from rest_framework.decorators import api_view
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+# from rest_framework.decorators import api_view	# for fbv
 
 
 class Home(APIView):
+	permission_classes = [IsAuthenticated,]
+
 	def get(self, request):
-		# persons = Person.objects.all()
-		# serialize_data = PersonSerializer(instance=persons, many=True)
-		persons = Person.objects.get(name='amir')
-		serialize_data = PersonSerializer(instance=persons)
+		persons = Person.objects.all()
+		serialize_data = PersonSerializer(instance=persons, many=True)
+		# persons = Person.objects.get(name='amir')
+		# serialize_data = PersonSerializer(instance=persons)
 		return Response(data=serialize_data.data)
 
 
