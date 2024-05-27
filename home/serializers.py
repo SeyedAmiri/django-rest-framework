@@ -15,7 +15,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     # user = serializers.StringRelatedField(read_only=True)
     # user = serializers.PrimaryKeyRelatedField(read_only=True)
     # user = serializers.SlugRelatedField(read_only=True, slug_field='email')
-    user = UserEmailNameRelationalField(read_only=True)
+    # user = UserEmailNameRelationalField(read_only=True)
 
 
     class Meta:
@@ -25,6 +25,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     def get_answers(self, obj):
         result = obj.answers.all()
         return AnswerSerializer(instance=result, many=True).data
+
 
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:

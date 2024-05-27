@@ -13,7 +13,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 		model = User
 		fields = ('username', 'email', 'password', 'password2')
 		extra_kwargs = {
-			'password': {'write_only':True},
+			'password': {'write_only': True},
 			'email': {'validators': (clean_email,)}
 		}
 
@@ -31,3 +31,9 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 		if data['password'] != data['password2']:
 			raise serializers.ValidationError('passwords must match')
 		return data
+
+
+class UserSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = User
+		fields = '__all__'
