@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
-
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 app_name = 'home'
 urlpatterns = [
